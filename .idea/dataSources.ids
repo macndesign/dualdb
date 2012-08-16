@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?><component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Django chinookdb" product="SQLite" version="3.7.2" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" uuid="38df658a-15d6-4ee4-91d7-8f4ca5fcf427">
+    <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+    <jdbc-url>jdbc:sqlite:C:\works\dualdb\dualdb\Chinook_Sqlite.sqlite</jdbc-url>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/.PyCharm20/config/jdbc-drivers/xerial-sqlite-license.txt</url>
+      </library>
+      <library>
+        <url>file://$USER_HOME$/.PyCharm20/config/jdbc-drivers/sqlite-jdbc-3.7.2.jar</url>
+      </library>
+    </libraries>
+    <table name="Album" schema="" catalog="" type="TABLE">
+      <column name="AlbumId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="Title" sqlType="NVARCHAR(160)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="ArtistId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <primary-key columns="albumid" />
+      <foreign-key columns="ArtistId" ref-table="Artist" ref-schema="" ref-catalog="" ref-columns="ArtistId" />
+      <index name="IFK_AlbumArtistId" unique="false" columns="ArtistId" />
+      <index name="IPK_Album" unique="true" columns="AlbumId" />
+    </table>
+    <table name="Artist" schema="" catalog="" type="TABLE">
+      <column name="ArtistId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="Name" sqlType="NVARCHAR(120)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <primary-key columns="artistid" />
+      <index name="IPK_Artist" unique="true" columns="ArtistId" />
+    </table>
+    <table name="Customer" schema="" catalog="" type="TABLE">
+      <column name="CustomerId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="FirstName" sqlType="NVARCHAR(40)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="LastName" sqlType="NVARCHAR(20)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="Company" sqlType="NVARCHAR(80)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="Address" sqlType="NVARCHAR(70)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="City" sqlType="NVARCHAR(40)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="State" sqlType="NVARCHAR(40)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="Country" sqlType="NVARCHAR(40)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="PostalCode" sqlType="NVARCHAR(10)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="Phone" sqlType="NVARCHAR(24)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="Fax" sqlType="NVARCHAR(24)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="Email" sqlType="NVARCHAR(60)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="SupportRepId" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <primary-key columns="customerid" />
+      <foreign-key columns="SupportRepId" ref-table="Employee" ref-schema="" ref-catalog="" ref-columns="EmployeeId" />
+      <index name="IFK_CustomerSupportRepId" unique="false" columns="SupportRepId" />
+      <index name="IPK_Customer" unique="true" columns="CustomerId" />
+    </table>
+    <table name="Employee" schema="" catalog="" type="TABLE">
+      <column name="EmployeeId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="LastName" sqlType="NVARCHAR(20)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="FirstName" sqlType="NVARCHAR(20)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="Title" sqlType="NVARCHAR(30)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="ReportsTo" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="BirthDate" sqlType="DATETIME" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="HireDate" sqlType="DATETIME" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="Address" sqlType="NVARCHAR(70)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="City" sqlType="NVARCHAR(40)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="State" sqlType="NVARCHAR(40)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="Country" sqlType="NVARCHAR(40)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="PostalCode" sqlType="NVARCHAR(10)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="Phone" sqlType="NVARCHAR(24)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="Fax" sqlType="NVARCHAR(24)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="Email" sqlType="NVARCHAR(60)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <primary-key columns="employeeid" />
+      <foreign-key columns="ReportsTo" ref-table="Employee" ref-schema="" ref-catalog="" ref-columns="EmployeeId" />
+      <index name="IFK_EmployeeReportsTo" unique="false" columns="ReportsTo" />
+      <index name="IPK_Employee" unique="true" columns="EmployeeId" />
+    </table>
+    <table name="Genre" schema="" catalog="" type="TABLE">
+      <column name="GenreId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="Name" sqlType="NVARCHAR(120)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <primary-key columns="genreid" />
+      <index name="IPK_Genre" unique="true" columns="GenreId" />
+    </table>
+    <table name="Invoice" schema="" catalog="" type="TABLE">
+      <column name="InvoiceId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="CustomerId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="InvoiceDate" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="BillingAddress" sqlType="NVARCHAR(70)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="BillingCity" sqlType="NVARCHAR(40)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="BillingState" sqlType="NVARCHAR(40)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="BillingCountry" sqlType="NVARCHAR(40)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="BillingPostalCode" sqlType="NVARCHAR(10)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="Total" sqlType="NUMERIC(10,2)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="invoiceid" />
+      <foreign-key columns="CustomerId" ref-table="Customer" ref-schema="" ref-catalog="" ref-columns="CustomerId" />
+      <index name="IFK_InvoiceCustomerId" unique="false" columns="CustomerId" />
+      <index name="IPK_Invoice" unique="true" columns="InvoiceId" />
+    </table>
+    <table name="InvoiceLine" schema="" catalog="" type="TABLE">
+      <column name="InvoiceLineId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="InvoiceId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="TrackId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="UnitPrice" sqlType="NUMERIC(10,2)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="Quantity" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <primary-key columns="invoicelineid" />
+      <foreign-key columns="TrackId,InvoiceId" ref-table="Track" ref-schema="" ref-catalog="" ref-columns="TrackId,InvoiceId" />
+      <index name="IFK_InvoiceLineTrackId" unique="false" columns="TrackId" />
+      <index name="IFK_InvoiceLineInvoiceId" unique="false" columns="InvoiceId" />
+      <index name="IPK_InvoiceLine" unique="true" columns="InvoiceLineId" />
+    </table>
+    <table name="MediaType" schema="" catalog="" type="TABLE">
+      <column name="MediaTypeId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="Name" sqlType="NVARCHAR(120)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <primary-key columns="mediatypeid" />
+      <index name="IPK_MediaType" unique="true" columns="MediaTypeId" />
+    </table>
+    <table name="Playlist" schema="" catalog="" type="TABLE">
+      <column name="PlaylistId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="Name" sqlType="NVARCHAR(120)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <primary-key columns="playlistid" />
+      <index name="IPK_Playlist" unique="true" columns="PlaylistId" />
+    </table>
+    <table name="PlaylistTrack" schema="" catalog="" type="TABLE">
+      <column name="PlaylistId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="TrackId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <primary-key columns="trackid" />
+      <foreign-key columns="TrackId,PlaylistId" ref-table="Track" ref-schema="" ref-catalog="" ref-columns="TrackId,PlaylistId" />
+      <index name="IFK_PlaylistTrackTrackId" unique="false" columns="TrackId" />
+      <index name="IPK_PlaylistTrack" unique="true" columns="PlaylistId,TrackId" />
+      <index name="sqlite_autoindex_PlaylistTrack_1" unique="true" columns="PlaylistId,TrackId" />
+    </table>
+    <table name="Track" schema="" catalog="" type="TABLE">
+      <column name="TrackId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="Name" sqlType="NVARCHAR(200)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="AlbumId" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="MediaTypeId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="GenreId" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="Composer" sqlType="NVARCHAR(220)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="Milliseconds" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="Bytes" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="UnitPrice" sqlType="NUMERIC(10,2)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="trackid" />
+      <foreign-key columns="MediaTypeId,GenreId,AlbumId" ref-table="MediaType" ref-schema="" ref-catalog="" ref-columns="MediaTypeId,GenreId,AlbumId" />
+      <index name="IFK_TrackMediaTypeId" unique="false" columns="MediaTypeId" />
+      <index name="IFK_TrackGenreId" unique="false" columns="GenreId" />
+      <index name="IFK_TrackAlbumId" unique="false" columns="AlbumId" />
+      <index name="IPK_Track" unique="true" columns="TrackId" />
+    </table>
+  </data-source>
+  <data-source source="LOCAL" name="Django default" product="SQLite" version="3.7.2" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" uuid="c53807c4-91bd-4c4f-be11-66ff5a8e6e4d">
+    <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+    <jdbc-url>jdbc:sqlite:C:\works\dualdb\dualdb\django.sqlite3</jdbc-url>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/.PyCharm20/config/jdbc-drivers/xerial-sqlite-license.txt</url>
+      </library>
+      <library>
+        <url>file://$USER_HOME$/.PyCharm20/config/jdbc-drivers/sqlite-jdbc-3.7.2.jar</url>
+      </library>
+    </libraries>
+    <table name="auth_group" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="name" sqlType="VARCHAR(80)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+      <index name="sqlite_autoindex_auth_group_1" unique="true" columns="name" />
+    </table>
+    <table name="auth_group_permissions" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="group_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="permission_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <primary-key columns="id" />
+      <foreign-key columns="permission_id" ref-table="auth_permission" ref-schema="" ref-catalog="" ref-columns="id" />
+      <index name="auth_group_permissions_1e014c8f" unique="false" columns="permission_id" />
+      <index name="auth_group_permissions_425ae3c4" unique="false" columns="group_id" />
+      <index name="sqlite_autoindex_auth_group_permissions_1" unique="true" columns="group_id,permission_id" />
+    </table>
+    <table name="auth_message" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="user_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="message" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+      <foreign-key columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" />
+      <index name="auth_message_403f60f" unique="false" columns="user_id" />
+    </table>
+    <table name="auth_permission" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="name" sqlType="VARCHAR(50)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="content_type_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="codename" sqlType="VARCHAR(100)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+      <index name="auth_permission_1bb8f392" unique="false" columns="content_type_id" />
+      <index name="sqlite_autoindex_auth_permission_1" unique="true" columns="content_type_id,codename" />
+    </table>
+    <table name="auth_user" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="username" sqlType="VARCHAR(30)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="first_name" sqlType="VARCHAR(30)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="last_name" sqlType="VARCHAR(30)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="email" sqlType="VARCHAR(75)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="password" sqlType="VARCHAR(128)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="is_staff" sqlType="BOOL" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="is_active" sqlType="BOOL" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="is_superuser" sqlType="BOOL" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="last_login" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="date_joined" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+      <index name="sqlite_autoindex_auth_user_1" unique="true" columns="username" />
+    </table>
+    <table name="auth_user_groups" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="user_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="group_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <primary-key columns="id" />
+      <foreign-key columns="group_id" ref-table="auth_group" ref-schema="" ref-catalog="" ref-columns="id" />
+      <index name="auth_user_groups_425ae3c4" unique="false" columns="group_id" />
+      <index name="auth_user_groups_403f60f" unique="false" columns="user_id" />
+      <index name="sqlite_autoindex_auth_user_groups_1" unique="true" columns="user_id,group_id" />
+    </table>
+    <table name="auth_user_user_permissions" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="user_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="permission_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <primary-key columns="id" />
+      <foreign-key columns="permission_id" ref-table="auth_permission" ref-schema="" ref-catalog="" ref-columns="id" />
+      <index name="auth_user_user_permissions_1e014c8f" unique="false" columns="permission_id" />
+      <index name="auth_user_user_permissions_403f60f" unique="false" columns="user_id" />
+      <index name="sqlite_autoindex_auth_user_user_permissions_1" unique="true" columns="user_id,permission_id" />
+    </table>
+    <table name="django_admin_log" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="action_time" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="user_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="content_type_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="object_id" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="object_repr" sqlType="VARCHAR(200)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="action_flag" sqlType="SMALLINT UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="change_message" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+      <foreign-key columns="content_type_id,user_id" ref-table="django_content_type" ref-schema="" ref-catalog="" ref-columns="id,id" />
+      <index name="django_admin_log_1bb8f392" unique="false" columns="content_type_id" />
+      <index name="django_admin_log_403f60f" unique="false" columns="user_id" />
+    </table>
+    <table name="django_content_type" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="name" sqlType="VARCHAR(100)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="app_label" sqlType="VARCHAR(100)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="model" sqlType="VARCHAR(100)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+      <index name="sqlite_autoindex_django_content_type_1" unique="true" columns="app_label,model" />
+    </table>
+    <table name="django_session" schema="" catalog="" type="TABLE">
+      <column name="session_key" sqlType="VARCHAR(40)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="session_data" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="expire_date" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="session_key" />
+      <index name="django_session_3da3d3d8" unique="false" columns="expire_date" />
+      <index name="sqlite_autoindex_django_session_1" unique="true" columns="session_key" />
+    </table>
+    <table name="django_site" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="domain" sqlType="VARCHAR(100)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="name" sqlType="VARCHAR(50)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+    </table>
+  </data-source>
+</component>
